@@ -1,0 +1,78 @@
+program
+    : statement_list
+
+statement_list
+    : statement NEWLINE statement_list
+    | statement NEWLINE
+    | statement
+
+statement
+    : assignment
+    | array_assign
+    | array_decl
+    | input_stmt
+    | output_stmt
+    | if_stmt
+    | while_stmt
+    | for_stmt
+    | function_def
+    | return_stmt
+    | call_stmt
+
+assignment   →  SET ID TO term_low
+array_assign →  SET ID[term_low] TO term_low
+array_decl   →  ARRAY ID[term_low]
+input_stmt   →  INPUT ID
+output_stmt  →  PRINT term_low
+return_stmt  →  RETURN term_low
+call_stmt    →  CALL ID(arg_list)
+
+if_stmt
+    : IF condition THEN NEWLINE statement_list else_part END
+
+else_part
+    : ELSE NEWLINE statement_list
+    | (empty)
+
+while_stmt
+    : WHILE condition DO NEWLINE statement_list END
+
+for_stmt
+    : FOR ID FROM term_low TO term_low STEP term_low DO NEWLINE statement_list END
+    | FOR ID FROM term_low TO term_low DO NEWLINE statement_list END
+
+function_def
+    : FUNCTION ID(param_list) NEWLINE statement_list END
+
+param_list
+    : ID COMMA param_list
+    | ID
+    | (empty)
+
+arg_list
+    : term_low COMMA arg_list
+    | term_low
+    | (empty)
+
+condition   →  term_low comp_op term_low
+
+comp_op     →  ==  |  !=  |  >  |  <  |  >=  |  <=  |  ===
+
+term_low
+    : term_low + term_high
+    | term_low - term_high
+    | term_high
+
+term_high
+    : term_high * operand
+    | term_high / operand
+    | term_high % operand
+    | operand
+
+operand
+    : NUMBER
+    | STRING
+    | ID
+    | ID[term_low]          (array access)
+    | ID(arg_list)          (function call expression)
+    | (term_low)            (parenthesised expression)
