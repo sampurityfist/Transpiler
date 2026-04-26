@@ -218,7 +218,7 @@ PRINT <name>[<index>]
 PRINT nums[0]
 ```
 
-> 💡 Arrays are zero-indexed and initialised to `[0, 0, …, 0]` on declaration.
+> Arrays are zero-indexed and initialised to `[0, 0, …, 0]` on declaration.
 
 ---
 
@@ -282,6 +282,3 @@ PRINT result
 10
 ```
 
----
-
-*Pseudocode Standard · v1.0 · Updated April 2026 · Compiles to Python 3 via `main.py`*
