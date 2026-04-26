@@ -1,4 +1,4 @@
-# 📘 PSEUDOCODE STANDARD
+# PSEUDOCODE STANDARD
 
 This document defines the syntax and structure of the language.
 It will keep updating as new features are added.
