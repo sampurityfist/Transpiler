@@ -103,7 +103,7 @@ def check_types(node, type_table, func_table=None):
     if node.type == 'input':
         var = node.children[0]
         if var.value not in type_table:
-            type_table[var.value] = 'string'
+            type_table[var.value] = 'number'
         return None
 
     elif node.type == 'assignment':
